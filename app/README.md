@@ -12,7 +12,7 @@ El proyecto está organizado en diferentes paquetes para separar las responsabil
 
 - **modelo:** contiene las clases Producto, Ingrediente y Pedido, que representan la información principal de la aplicación.
 - **vista:** contiene la clase VentanaPrincipal, donde posteriormente se desarrollará la interfaz gráfica utilizando Java Swing.
-- **controlador:** contiene la clase PedidoController, encargada de gestionar las acciones del usuario.
+- **controlador:**     contiene la clase PedidoController, encargada de gestionar las acciones del usuario.
 - **patrones:** contiene las clases necesarias para trabajar con los patrones de diseño:
   - **prototype:** incluye ProductoPrototype y ProductoConcreto, que servirán para crear copias de productos.
   - **decorator:** incluye ProductoDecorator e IngredienteDecorator, que permitirán agregar ingredientes y personalizar los productos.
