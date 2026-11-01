@@ -18,31 +18,23 @@ public abstract class ProductoBase implements Pedido, Prototipo<ProductoBase>{
         this.tipo = tipo;
     }
 
-    @Override
-    public String descripcion() {
-        // TODO Auto-generated method stub
-        return descripcion;
-    }
-
-    @Override
+     @Override
     public String id() {
-        // TODO Auto-generated method stub
         return id;
     }
 
     @Override
-    public BigDecimal precio() {
-        // TODO Auto-generated method stub
-        return precioBase;
-    }
-
-    @Override
     public TipoProducto tipo() {
-        // TODO Auto-generated method stub
         return tipo;
     }
 
-   
-    //los override
-    
+    @Override
+    public String descripcion() {
+        return descripcion;
+    }
+
+    @Override
+    public BigDecimal precio() {
+        return precioBase;
+    }
 }
