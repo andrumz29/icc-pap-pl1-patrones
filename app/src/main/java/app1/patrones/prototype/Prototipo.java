@@ -1,5 +1,7 @@
-package ec.edu.pedidolab.patrones.prototype;
+package app1.patrones.prototype;
 
-public class Prototipo {
-    
+public interface Prototipo<T> {
+
+    T copiar(String nuevoId);
+
 }
