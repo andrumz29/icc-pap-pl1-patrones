@@ -3,7 +3,7 @@ package app1.patrones.decorator;
 import app1.modelo.Pedido;
 
 public abstract class DecoradorIngrediente implements Pedido {
-
+//agregar objetos sin modficar
     protected Pedido pedido;
 
     public DecoradorIngrediente(Pedido pedido) {
