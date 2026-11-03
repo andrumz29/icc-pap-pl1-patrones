@@ -12,7 +12,7 @@ public class Azucar extends DecoradorIngrediente {
 
     @Override
     public String descripcion() {
-        return pedido.descripcion() + " + Azúcar";
+        return pedido.descripcion() + " + Azucar";
     }
 
     @Override

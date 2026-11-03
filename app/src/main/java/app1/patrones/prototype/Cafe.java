@@ -8,7 +8,7 @@ public class Cafe extends ProductoBase {
     public Cafe(String id) {
         super(
             id,
-            "Café",
+            "Cafe",
             new BigDecimal("2.20"),
             TipoProducto.CAFE
         );
