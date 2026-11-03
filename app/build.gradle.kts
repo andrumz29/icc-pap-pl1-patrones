@@ -33,8 +33,7 @@ java {
 }
 
 application {
-    // Define the main class for the application.
-    mainClass = "icc.pap.pl1.patrones.App"
+    mainClass.set("app1.Main")
 }
 
 tasks.named<Test>("test") {
