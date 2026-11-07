@@ -1,43 +1,117 @@
 # Evidencias APP1 — PedidoLab
 
-**Repositorio:** https://github.com/andrumz29/icc-pap-pl1-patrones
-**Integrantes:** Andres Eduardo Mendez 
+**Repositorio:** https://github.com/andrumz29/icc-pap-pl1-patrones  
+**Integrantes:** Andres Eduardo Mendez Mendez  
 **Fecha:** 06/11/2026
 
 ## Casos de prueba
 
-| Caso | Entrada | Resultado esperado | Resultado real | Evidencia | Estado |
+| ID | Operación / entrada | Resultado esperado | Resultado obtenido | Evidencia | Patrón validado |
 |---|---|---|---|---|---|
-| CA01 | Seleccionar Café y presionar el boton Clonar producto. | Se debe crear un nuevo pedido con un ID diferente y precio de $2.20. | Se creo correctamente el pedido P-001 con su precio de $2.20. | Captura de Café clonado. | Aprobado |
-| CA02 | Seleccionar Ensalada y clonar el producto. | Se debe crear una ensalada con precio inicial de $3.00. | Se creo correctamente la ensalada con su precio de $3.00. | Captura de Ensalada clonada. | Aprobado |
-| CA03 | Seleccionar Pizza y clonar el producto. | Se debe crear una pizza con precio inicial de $5.00. | Se creo correctamente la pizza y aparecio en la tabla de pedidos. | Captura de Pizza clonada. | Aprobado |
-| CA04 | Seleccionar un Café y agregar Azúcar. | La descripción debe actualizarse y el precio aumentar $0.50. | Se agrego el azúcar correctamente y el precio cambio de $2.20 a $2.70. | Captura de Café con azúcar. | Aprobado |
-| CA05 | Seleccionar un Café y agregar Crema. | El precio debe aumentar $1.20. | Se agrego la crema correctamente y el precio cambio de $2.20 a $3.40. | Captura de Café con crema. | Aprobado |
-| CA06 | Crear una Ensalada y agregar Tomate y Pollo. | Se deben agregar los dos ingredientes y el total debe ser $5.60. | Se agregaron los ingredientes correctamente y el total fue de $5.60. | Captura de Ensalada personalizada. | Aprobado |
-| CA07 | Crear una Pizza y agregar Queso y Pepperoni. | Se deben agregar los dos ingredientes y el total debe ser $7.10. | Se agregaron correctamente los ingredientes y el total fue de $7.10. | Captura de Pizza personalizada. | Aprobado |
-| CA08 | Crear dos cafés y agregar ingredientes solamente al primero. | El segundo café debe mantener su precio original y no cambiar sus ingredientes. | Se comprobo que el primer café cambio a $3.90 y el segundo se mantuvo en $2.20. | Captura de los dos pedidos. | Aprobado |
-| CA09 | Seleccionar un ingrediente que no corresponda al producto. | El sistema debe mostrar un mensaje de error y no permitir agregar un ingrediente incompatible. | El sistema mostro un mensaje indicando que el ingrediente no es compatible con el producto. | Captura del mensaje de error. | Aprobado |
-| CA10 | Presionar el boton Agregar ingrediente sin seleccionar un pedido. | El sistema debe mostrar un mensaje indicando que primero se debe seleccionar un pedido. | El sistema valida que exista un pedido seleccionado antes de agregar ingredientes. | Captura del mensaje de advertencia. | Pendiente de adjuntar evidencia |
-| CA11 | Presionar Reiniciar pedidos y confirmar la operación. | Se deben eliminar todos los pedidos, limpiar la tabla y reiniciar el contador de IDs sin modificar los prototipos. | Los pedidos se eliminaron correctamente y al crear otro producto el contador volvió a empezar desde P-001. | Captura de la tabla vacía y nuevo pedido. | Aprobado |
+| CA01 | Clonar Cafe dos veces. | IDs diferentes; ambos empiezan en $2.20. | Se generaron P-001 y P-002, con precio de $2.20 y referencias diferentes. | ![CA01](src/main/resources/imagenes/CA01_Clonar_Cafe_Dos_Veces.png) | Prototype |
+| CA02 | Comparar clon y objeto del registro. | Referencias distintas; el prototipo conserva su configuración. | El clon y el prototipo son referencias distintas. Ambos mantienen precio de $2.20 y descripción Cafe. | ![CA02](src/main/resources/imagenes/CA02_Comparar_Clon_Prototipo.png) | Prototype |
+| CA03 | Al primer Cafe agregar Azúcar y Crema. | Descripción incluye ambos ingredientes; total $3.90. | La descripción muestra Cafe + Azúcar + Crema y el precio es $3.90. | ![CA03](src/main/resources/imagenes/CA03_Cafe_Azucar_Crema.png) | Integración |
+| CA04 | Consultar el segundo Cafe sin ingredientes. | Mantiene $2.20, sin ingredientes. | El segundo Cafe conserva la descripción Café y el precio base de $2.20. | ![CA04](src/main/resources/imagenes/CA04_Segundo_Cafe_Sin_Ingredientes.png) | Prototype |
+| CA05 | Clonar Ensalada y agregar Tomate y Pollo. | Total $5.60. | La descripción muestra Ensalada sencilla + Tomate + Pollo y el precio es $5.60. | ![CA05](src/main/resources/imagenes/CA05_Ensalada_Tomate_Pollo.png) | Integración |
+| CA06 | Clonar Pizza y agregar Queso y Pepperoni. | Total $7.10. | La descripción muestra Pizza sencilla + Queso + Pepperoni y el precio es $7.10. | ![CA06](src/main/resources/imagenes/CA06_Pizza_Queso_Pepperoni.png) | Integración |
+| CA07 | Intentar agregar Queso a Cafe. | Operación rechazada; total y descripción no cambian. | Se mostró el error de ingrediente incompatible. El precio y la descripción permanecieron iguales. | ![CA07](src/main/resources/imagenes/CA07_Ingrediente_Incompatible.png) | Validación |
+| CA08 | Agregar ingrediente sin pedido seleccionado. | Mensaje claro y ningún cambio de estado. | Se mostró el mensaje solicitando seleccionar un pedido. | ![CA08](src/main/resources/imagenes/CA08_Sin_Pedido_Seleccionado.png) | Validación |
+| CA09 | Solicitar clon de clave inexistente. | Fallo controlado; no se crea pedido. | Se mostró el error de prototipo inexistente para la clave hamburguesa. | ![CA09](src/main/resources/imagenes/CA09_Clave_Inexistente.png) | Prototype |
+| CA10 | Agregar dos veces Azúcar a un Cafe. | Total $3.20 y dos aplicaciones del decorador. | La descripción muestra Cafe + Azúcar + Azúcar y el precio es $3.20. | ![CA10](src/main/resources/imagenes/CA10_Azucar_Duplicada.png) | Decorator |
+| CA11 | Reiniciar y volver a clonar Cafe. | Nuevos pedidos parten nuevamente del valor base $2.20. | Despus de reiniciar no quedaron pedidos y el nuevo Caf comenzó con ID P-001 y precio $2.20. | ![Evidencia CA11](src/main/resources/imagenes/CA11_Reiniciar_Clonar_Cafe.png) | Prototype |
+---
 
-## Identificación de patrones
+# Evidencias fotograficas
 
-- **Prototype:** Se utiliza la interfaz `Prototipo<T>` que contiene el metodo `copiar(String nuevoId)`. La clase `ProductoBase` implementa esta interfaz y las clases `Cafe`, `Ensalada` y `Pizza` realizan la copia de cada producto. El registro de los prototipos se encuentra en `RegistroPrototipos.java`, donde se guardan los productos originales y se utiliza el metodo `clonar()` para generar nuevas copias con diferentes identificadores.
+## CA01 - Clonar Cafe dos veces
 
-- **Decorator:** Se utiliza la clase abstracta `DecoradorIngrediente`, que implementa la interfaz `Pedido` y contiene una referencia llamada `pedido` al objeto que se desea decorar. Algunos decoradores concretos son `Azucar.java` y `Crema.java`. Estos permiten agregar ingredientes al pedido sin modificar las clases originales de los productos.
+![Evidencia CA01](src/main/resources/imagenes/CA01_Clonar_Cafe_Dos_Veces.png)
 
-- **Integración:** La integración de los dos patrones se realiza principalmente en el metodo `agregarIngrediente()` de la clase `ServicioPedidos.java`. Primero se crea un pedido mediante la clonación de un prototipo y despues se pueden agregar ingredientes utilizando los decoradores. Por ejemplo, un Café puede recibir primero Azúcar y despues Crema, aumentando su descripción y su precio sin modificar el prototipo original.
+## CA02 - Comparar clon y prototipo
 
-## Decisiones de diseño
+![Evidencia CA02](src/main/resources/imagenes/CA02_Comparar_Clon_Prototipo.png)
 
-1. Se decidio utilizar el patron Prototype para poder crear diferentes pedidos a partir de productos originales ya registrados. De esta manera cada pedido tiene su propio ID y se puede personalizar sin afectar a los demas productos.
+## CA03 - Cafe con Azúcar y Crema
 
-2. Se utilizo el patron Decorator para agregar ingredientes de una manera mas sencilla, evitando crear una clase diferente para cada combinación de productos. Tambien se utilizo `BigDecimal` para manejar los precios y evitar errores en las operaciones decimales.
+![Evidencia CA03](src/main/resources/imagenes/CA03_Cafe_Azucar_Crema.png)
 
-## Conclusiones
+## CA04 - Segundo Cafe sin ingredientes
 
-1. Con este proyecto pude comprender mejor como funciona el patron Prototype, ya que permite crear copias de objetos sin tener que construirlos desde cero cada vez que se necesita un producto nuevo.
+![Evidencia CA04](src/main/resources/imagenes/CA04_Segundo_Cafe_Sin_Ingredientes.png)
 
-2. Aprendi que el patron Decorator permite agregar nuevas caracteristicas a un objeto sin modificar su clase original. En nuestro caso se utilizo para agregar ingredientes y aumentar el precio de cada pedido.
+## CA05 - Ensalada con Tomate y Pollo
 
-3. Al realizar este proyecto tambien pude practicar el uso de Java, la programación orientada a objetos y la creacion de interfaces graficas con Swing. Ademas comprendi la importancia de separar las responsabilidades en diferentes clases para tener un codigo mas ordenado y facil de mantener.
+![Evidencia CA05](src/main/resources/imagenes/CA05_Ensalada_Tomate_Pollo.png)
+
+## CA06 - Pizza con Queso y Pepperoni
+
+![Evidencia CA06](src/main/resources/imagenes/CA06_Pizza_Queso_Pepperoni.png)
+
+## CA07 - Ingrediente incompatible
+
+![Evidencia CA07](src/main/resources/imagenes/CA07_Ingrediente_Incompatible.png)
+
+## CA08 - Sin pedido seleccionado
+
+![Evidencia CA08](src/main/resources/imagenes/CA08_Sin_Pedido_Seleccionado.png)
+
+## CA09 - Clave inexistente
+
+![Evidencia CA09](src/main/resources/imagenes/CA09_Clave_Inexistente.png)
+
+## CA10 - Azúcar agregada dos veces
+
+![Evidencia CA10](src/main/resources/imagenes/CA10_Azucar_Duplicada.png)
+
+## CA11 - Reiniciar y clonar Cafe
+
+![Evidencia CA11](src/main/resources/imagenes/CA11_Reiniciar_Clonar_Cafe.png)
+
+---
+
+# Identificación de patrones
+
+## Prototype
+
+Se implementa mediante las siguientes clases e interfaces:
+
+- `Prototipo<T>`
+- `ProductoBase`
+- `Cafe`
+- `Ensalada`
+- `Pizza`
+- `RegistroPrototipos`
+
+El registro almacena los prototipos y permite crear copias mediante el método `clonar()`, asignando un nuevo identificador a cada pedido.
+
+## Decorator
+
+Se implementa mediante:
+
+- `DecoradorIngrediente`
+- `Azucar`
+- `Crema`
+- `Tomate`
+- `Pollo`
+- `Queso`
+- `Pepperoni`
+
+Cada decorador recibe un pedido y lo envuelve, agregando una descripción y un costo adicional sin modificar el producto original.
+
+## Integración
+
+La integración se realiza en `ServicioPedidos`, específicamente en el metodo `agregarIngrediente()`, que valida la compatibilidad y aplica el decorador correspondiente al pedido seleccionado.
+
+# Decisiones de diseño
+
+1. Se utiliza Prototype para crear pedidos a partir de productos base registrados, asignando un ID nuevo a cada clon y evitando modificar el prototipo original.
+2. Se utiliza Decorator para agregar ingredientes dinámicamente sin crear una clase distinta para cada combinación posible.
+3. Se utiliza `BigDecimal` para manejar los precios y evitar problemas de precisión en los valores monetarios.
+4. Se implementan validaciones para impedir ingredientes incompatibles, claves inexistentes y operaciones sin un pedido seleccionado.
+
+# Conclusiones
+
+1. Las pruebas muestran que los clones son independientes y que el prototipo conserva su configuración original.
+2. El patrón Decorator permite agregar ingredientes, acumular sus precios y conservar la composición del pedido.
+3. Las validaciones rechazan operaciones incorrectas sin modificar los pedidos existentes.
+4. El reinicio permite limpiar los pedidos y comenzar nuevamente la numeración desde P-001.

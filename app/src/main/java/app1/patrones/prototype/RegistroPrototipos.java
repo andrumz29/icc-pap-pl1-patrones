@@ -28,5 +28,15 @@ public class RegistroPrototipos {
         return prototipo.copiar(nuevoId);
     }
 
-    
+    public ProductoBase obtenerPrototipo(String clave) {
+    ProductoBase prototipo = prototipos.get(clave.toLowerCase());
+
+    if (prototipo == null) {
+        throw new IllegalArgumentException(
+            "No existe un prototipo con la clave: " + clave
+        );
+    }
+
+    return prototipo;
+}
 }
