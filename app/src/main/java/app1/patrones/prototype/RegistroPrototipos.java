@@ -27,4 +27,6 @@ public class RegistroPrototipos {
 
         return prototipo.copiar(nuevoId);
     }
+
+    
 }
