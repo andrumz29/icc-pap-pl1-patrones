@@ -15,7 +15,7 @@ public class ServicioPedidos {
     private RegistroPrototipos registro;
     private List<Pedido> pedidos;
     private int contadorId;
-
+// constructor con inicialización de los atributos
     public ServicioPedidos() {
         registro = new RegistroPrototipos();
         pedidos = new ArrayList<>();
@@ -62,14 +62,11 @@ public class ServicioPedidos {
                 "No existe el pedido seleccionado."
             );
         }
-
+            //trim elimina los espacios y tolower case convierte a minissculas para evitar errorres 
         String nombre = ingrediente.trim().toLowerCase();
 
         if (!esCompatible(pedido.tipo(), nombre)) {
-            throw new IllegalArgumentException(
-                "El ingrediente " + ingrediente
-                + " no es compatible con " + pedido.tipo()
-            );
+            throw new IllegalArgumentException("El ingrediente " + ingrediente + " no es compatible con " + pedido.tipo()         );
         }
 
         Pedido personalizado;
@@ -77,6 +74,7 @@ public class ServicioPedidos {
         switch (nombre) {
             case "azucar":
             case "azúcar":
+                //se crea un decorador y se asigna a una variable 
                 personalizado = new Azucar(pedido);
                 break;
 
@@ -113,8 +111,7 @@ public class ServicioPedidos {
     }
 
     // Validar ingredientes permitidos por producto
-    private boolean esCompatible(
-            TipoProducto tipo, String ingrediente) {
+    private boolean esCompatible( TipoProducto tipo, String ingrediente) {
 
         Set<String> permitidos;
 
@@ -130,7 +127,7 @@ public class ServicioPedidos {
             case PIZZA:
                 permitidos = Set.of("queso", "pepperoni");
                 break;
-
+                //no coincide retorna una falso
             default:
                 return false;
         }

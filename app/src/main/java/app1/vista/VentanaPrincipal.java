@@ -3,11 +3,15 @@ package app1.vista;
 
 import app1.controlador.PedidoController;
 import app1.modelo.Pedido;
-
+//swing se usa para interfaces graficas en java 
 import javax.swing.*;
+//se usa para crear modelos de tabla lo utilice para poner los pedidos en una tabla y selecionar uno a uno
 import javax.swing.table.DefaultTableModel;
+//use este para hacer bordes 
 import javax.swing.border.EmptyBorder;
+//es para los grid lauout y organizar los paneles 
 import java.awt.*;
+//para trabajar con la lista de pedidos y recorrer
 import java.util.List;
 
 public class VentanaPrincipal extends JFrame {
@@ -22,6 +26,7 @@ public class VentanaPrincipal extends JFrame {
     private JPanel panelDetalle;
 
     private JTable tablaPedidos;
+    //modelo de tabla para la tabla de pedidos
     private DefaultTableModel modeloTabla;
 
     private JLabel lblId;

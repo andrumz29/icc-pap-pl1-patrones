@@ -27,7 +27,7 @@ public class RegistroPrototipos {
 
         return prototipo.copiar(nuevoId);
     }
-
+//Ese método sirve para buscar un prototipo y comprobar que la clave exista solo consulta para prueba de casos
     public ProductoBase obtenerPrototipo(String clave) {
     ProductoBase prototipo = prototipos.get(clave.toLowerCase());
 
